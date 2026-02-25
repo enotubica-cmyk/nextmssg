@@ -2102,6 +2102,14 @@ function mockFetch(url,opts={}){
   if(url.match(/\/api\/chats\/[^/]+\/avatar/)&&method==='POST'){
     return ok({avatar:null});
   }
+  // GET/POST /api/messages/:id/comments
+  if(url.match(/\/api\/messages\/[^/]+\/comments/)&&method==='GET'){
+    return ok([]);
+  }
+  if(url.match(/\/api\/messages\/[^/]+\/comments/)&&method==='POST'){
+    const u=userFromToken(tok);if(!u)return err('Unauthorized',401);
+    return ok({id:genId(),senderId:u.id,senderName:u.displayName||u.username,content:body.content||'',createdAt:Date.now()});
+  }
   // Fallback for unknown routes
   console.warn('mockFetch: unhandled', method, url);
   return ok({});
@@ -2628,6 +2636,7 @@ async function initComments(msgId){
   }
   renderComments(msgId);
 }
+async function loadComments(msgId){
   try{
     const r=await api(`/api/messages/${msgId}/comments`);
     if(r.ok){commentsData[msgId]=await r.json();}
