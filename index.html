@@ -76,7 +76,7 @@ a{color:var(--acc);}
 /* Logo */
 .auth-logo{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:32px;}
 .auth-logo-icon{width:72px;height:72px;position:relative;animation:logoSpin 0s;cursor:default;}
-.logo-bg{width:72px;height:72px;border-radius:22px;background:var(--accG);display:flex;align-items:center;justify-content:center;box-shadow:var(--glow),inset 0 1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden;}
+.logo-bg{width:80px;height:80px;border-radius:24px;background:var(--accG);display:flex;align-items:center;justify-content:center;box-shadow:var(--glow),0 0 60px rgba(43,138,245,.5),0 0 100px rgba(43,138,245,.2),inset 0 1px 0 rgba(255,255,255,.3);position:relative;overflow:hidden;}
 .logo-bg::before{content:'';position:absolute;inset:-50%;background:conic-gradient(transparent,rgba(255,255,255,.15),transparent 60%);animation:logoRot 4s linear infinite;}
 @keyframes logoRot{to{transform:rotate(360deg);}}
 .logo-inner{position:relative;z-index:1;font-size:34px;line-height:1;}
@@ -130,7 +130,8 @@ a{color:var(--acc);}
 .sb-head{padding:12px 10px 8px;flex-shrink:0;}
 .sb-top{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
 .sb-brand{display:flex;align-items:center;gap:9px;flex:1;min-width:0;}
-.sb-logo{width:34px;height:34px;border-radius:10px;background:var(--accG);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;box-shadow:var(--glow);}
+.sb-logo{width:36px;height:36px;border-radius:12px;background:var(--accG);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;box-shadow:var(--glow),0 0 20px rgba(43,138,245,.4),inset 0 1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden;}
+.sb-logo::before{content:'';position:absolute;inset:-50%;background:conic-gradient(transparent,rgba(255,255,255,.1),transparent 60%);animation:logoRot 4s linear infinite;}
 .sb-title{font-size:17px;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#fff,var(--acc));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .ib{width:32px;height:32px;border:none;border-radius:9px;background:transparent;color:var(--tx2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all var(--t);flex-shrink:0;}
 .ib:hover{background:var(--bg4);color:var(--tx);box-shadow:var(--shadow2);}
@@ -187,6 +188,12 @@ a{color:var(--acc);}
 .ph-icon{font-size:64px;opacity:.15;filter:drop-shadow(var(--glow));}
 .ph-t{font-size:16px;color:var(--tx3);font-weight:600;}
 .ph-s{font-size:13px;color:var(--tx3);}
+.ph-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;}
+.ph-logo-box{width:96px;height:96px;border-radius:28px;background:var(--accG);display:flex;align-items:center;justify-content:center;box-shadow:var(--glow),0 0 60px rgba(43,138,245,.3),inset 0 1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden;animation:phPulse 3s ease-in-out infinite;}
+.ph-logo-box::before{content:'';position:absolute;inset:-50%;background:conic-gradient(transparent,rgba(255,255,255,.15),transparent 60%);animation:logoRot 4s linear infinite;}
+.ph-logo-inner{position:relative;z-index:1;font-size:48px;line-height:1;}
+.ph-logo-name{font-size:36px;font-weight:900;letter-spacing:-1.5px;background:linear-gradient(135deg,#fff,var(--acc));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+@keyframes phPulse{0%,100%{box-shadow:var(--glow),0 0 60px rgba(43,138,245,.3),inset 0 1px 0 rgba(255,255,255,.2);}50%{box-shadow:var(--glow),0 0 100px rgba(43,138,245,.5),inset 0 1px 0 rgba(255,255,255,.2);}}
 
 /* Chat header */
 .ch{background:rgba(13,17,32,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);padding:10px 14px;display:flex;align-items:center;gap:11px;flex-shrink:0;box-shadow:0 2px 20px rgba(0,0,0,.3);}
@@ -579,6 +586,24 @@ a{color:var(--acc);}
 .msg-star:hover{opacity:1!important;}
 .msg-star.starred{opacity:1;color:#f59e0b;}
 
+
+/* ══ MOBILE BOTTOM NAV (Telegram-style) ══ */
+.mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:calc(56px + var(--safe));padding-bottom:var(--safe);background:rgba(13,17,32,.97);border-top:1px solid var(--brd);z-index:50;backdrop-filter:blur(20px);}
+@media(max-width:768px){.mob-nav{display:flex;}}
+.mob-nav-items{display:flex;width:100%;height:56px;}
+.mob-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;position:relative;transition:all var(--t);-webkit-tap-highlight-color:transparent;}
+.mob-nav-item:active{transform:scale(.9);}
+.mob-nav-ic{font-size:20px;line-height:1;}
+.mob-nav-lbl{font-size:10px;font-weight:600;color:var(--tx3);transition:color var(--t);}
+.mob-nav-item.act .mob-nav-lbl{color:var(--acc);}
+.mob-nav-badge{position:absolute;top:6px;right:50%;transform:translateX(10px);background:var(--accG);color:#fff;font-size:9px;font-weight:800;min-width:16px;height:16px;border-radius:20px;display:flex;align-items:center;justify-content:center;padding:0 4px;}
+.mob-nav-ic svg{transition:all var(--t);}
+.mob-nav-item.act .mob-nav-ic svg{filter:drop-shadow(0 0 6px var(--acc));}
+@media(max-width:768px){
+  #app{padding-bottom:calc(56px + var(--safe));}
+  .sb{padding-bottom:0 !important;}
+  .sb-foot{padding-bottom:8px !important;}
+}
 </style>
 </head>
 <body>
@@ -602,7 +627,7 @@ a{color:var(--acc);}
         <button class="at" id="tab-r" onclick="switchTab('register')">Регистрация</button>
       </div>
       <div class="afields">
-        <div id="dn-wrap" class="afield" style="display:none"><span class="afield-ic">ud83dude0a</span><input class="ainp ic" type="text" id="a-dn" placeholder="Имя (необязательно)" maxlength="32"></div>
+        <div id="dn-wrap" class="afield" style="display:none"><span class="afield-ic">😊</span><input class="ainp ic" type="text" id="a-dn" placeholder="Имя (необязательно)" maxlength="32"></div>
         <div class="afield"><span class="afield-pre">@</span><input class="ainp pre" type="text" id="a-un" placeholder="username" autocomplete="username" oninput="cleanUn(this)"></div>
         <div id="un-hint" class="ahint" style="display:none">✓ Только a-z, 0-9, точка, подчёркивание. Минимум 5 символов.</div>
         <div class="afield"><span class="afield-ic">🔒</span><input class="ainp ic" type="password" id="a-pw" placeholder="Пароль (мин. 6 символов)" autocomplete="current-password" oninput="checkPwStrength(this)"></div>
@@ -654,9 +679,10 @@ a{color:var(--acc);}
   <!-- MAIN -->
   <div class="main">
     <div class="placeholder" id="ph">
-      <div class="ph-icon">ud83dudcac</div>
-      <div class="ph-t">Выберите чат</div>
-      <div class="ph-s">или начните новый разговор</div>
+      <div class="ph-logo-wrap">
+        <div class="ph-logo-box"><div class="ph-logo-inner">⚡</div></div>
+        <div class="ph-logo-name">Nexus</div>
+      </div>
     </div>
     <div id="chat-view" style="display:none;flex-direction:column;flex:1;min-height:0;position:relative;overflow:hidden;">
       <div class="ch">
@@ -673,7 +699,7 @@ a{color:var(--acc);}
         </button>
       </div>
       <div id="pin-bar" class="pin-bar" style="display:none" onclick="scrollToPin()">
-        <div class="pin-ic">ud83dudccc</div>
+        <div class="pin-ic">📌</div>
         <div class="pin-txt"><span class="pin-lbl" id="pin-lbl">Закреплённое</span><span class="pin-val" id="pin-val"></span></div>
         <button class="ib" onclick="event.stopPropagation();unpinMsg()" style="font-size:12px">✕</button>
       </div>
@@ -689,19 +715,19 @@ a{color:var(--acc);}
       <div class="input-area">
         <div id="edit-notice" class="edit-notice" style="display:none"><span>✏️ <span id="en-l">Редактирование</span></span><button class="en-x" onclick="cancelEdit()">✕</button></div>
         <div id="pf-bar" class="pf-bar" style="display:none">
-          <div class="pf-ico" id="pf-ico">ud83dudcce</div>
+          <div class="pf-ico" id="pf-ico">📎</div>
           <div class="pf-nm" id="pf-nm"></div>
           <div class="pf-sz" id="pf-sz"></div>
           <button class="pf-rm" onclick="rmPF()">✕</button>
         </div>
-        <div id="ch-notice" class="ch-notice" style="display:none">ud83dudce2 Только администратор публикует</div>
+        <div id="ch-notice" class="ch-notice" style="display:none">📢 Только администратор публикует</div>
         <div class="irow" id="irow">
-          <button class="tb" onclick="toggleEmj()" id="emj-btn">ud83dude0a</button>
+          <button class="tb" onclick="toggleEmj()" id="emj-btn">😊</button>
           <label class="tb" style="cursor:pointer" title="Файл">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
             <input type="file" id="file-inp" style="display:none" onchange="selectFile(this)">
           </label>
-          <button class="tb" id="v-btn" onmousedown="startRec(event)" onmouseup="stopRec(event)" ontouchstart="startRec(event);voiceSwipeStartY=event.touches[0].clientY" ontouchend="stopRec(event)" ontouchmove="checkVoiceSwipe(event)" title="Удержи для записи">ud83cudfa4</button>
+          <button class="tb" id="v-btn" onmousedown="startRec(event)" onmouseup="stopRec(event)" ontouchstart="startRec(event);voiceSwipeStartY=event.touches[0].clientY" ontouchend="stopRec(event)" ontouchmove="checkVoiceSwipe(event)" title="Удержи для записи">🎤</button>
           <div id="rec-ind" class="rec-ind"><div class="rec-dot"></div><span class="rec-t" id="rec-t">0:00</span><span style="font-size:12px;color:var(--tx2);flex:1">Запись… отпусти</span></div>
           <textarea class="msg-ta" id="msg-ta" placeholder="Сообщение…" rows="1" oninput="onTaIn(this)" onkeydown="onTaKey(event)"></textarea>
           <button class="send-btn" id="send-btn" onclick="sendMsg()">
@@ -745,7 +771,7 @@ a{color:var(--acc);}
 </div></div>
 
 <div class="mov" id="grp-mov"><div class="modal">
-  <div class="mhdr"><h3>ud83dudc65 Создать группу</h3><button class="mx" onclick="closeMov('grp-mov')">✕</button></div>
+  <div class="mhdr"><h3>👥 Создать группу</h3><button class="mx" onclick="closeMov('grp-mov')">✕</button></div>
   <input class="minp" type="text" id="grp-n" placeholder="Название группы">
   <textarea class="mta" id="grp-d" placeholder="Описание (необязательно)"></textarea>
   <div class="chips" id="grp-chips"></div>
@@ -755,11 +781,11 @@ a{color:var(--acc);}
 </div></div>
 
 <div class="mov" id="ch-create-mov"><div class="modal">
-  <div class="mhdr"><h3>ud83dudce2 Создать канал</h3><button class="mx" onclick="closeMov('ch-create-mov')">✕</button></div>
+  <div class="mhdr"><h3>📢 Создать канал</h3><button class="mx" onclick="closeMov('ch-create-mov')">✕</button></div>
   <input class="minp" type="text" id="ch-cn" placeholder="Название канала">
   <div style="position:relative"><span style="position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--tx3);font-weight:700;pointer-events:none;z-index:1">@</span><input class="minp" style="padding-left:30px" type="text" id="ch-cu" placeholder="username канала (обязательно)" oninput="cleanUn(this)"></div>
   <label class="ava-up" for="ch-ava-inp" id="ch-ava-label">
-    <div class="ava-up-prev" id="ch-ava-prev"><span>ud83dudce2</span></div>
+    <div class="ava-up-prev" id="ch-ava-prev"><span>📢</span></div>
     <div style="font-size:12.5px;color:var(--tx2);text-align:center">Аватарка канала (необязательно)<br><span style="font-size:11px;color:var(--tx3)">JPG, PNG</span></div>
     <input type="file" id="ch-ava-inp" accept="image/*" style="display:none" onchange="previewChAva(this)">
   </label>
@@ -769,7 +795,7 @@ a{color:var(--acc);}
 </div></div>
 
 <div class="mov" id="ch-disc-mov"><div class="modal">
-  <div class="mhdr"><h3>ud83dudce2 Каналы</h3><button class="mx" onclick="closeMov('ch-disc-mov')">✕</button></div>
+  <div class="mhdr"><h3>📢 Каналы</h3><button class="mx" onclick="closeMov('ch-disc-mov')">✕</button></div>
   <input class="minp" type="text" id="ch-ds" placeholder="Поиск каналов…" oninput="loadChs(this.value)">
   <div class="mul" id="ch-dl"><div class="empty-n">Загрузка…</div></div>
   <div class="mftr"><button class="mc" onclick="closeMov('ch-disc-mov')">Закрыть</button></div>
@@ -778,7 +804,7 @@ a{color:var(--acc);}
 <div class="mov" id="pf-edit-mov"><div class="modal" style="max-width:500px">
   <div class="mhdr"><h3>✏️ Редактировать профиль</h3><button class="mx" onclick="closeMov('pf-edit-mov')">✕</button></div>
   <div id="pf-edit-body" style="overflow-y:auto;max-height:62vh;display:flex;flex-direction:column;gap:13px;padding-right:2px;"></div>
-  <div class="mftr"><button class="mc" onclick="closeMov('pf-edit-mov')">Отмена</button><button class="mo" onclick="saveProfile()">ud83dudcbe Сохранить</button></div>
+  <div class="mftr"><button class="mc" onclick="closeMov('pf-edit-mov')">Отмена</button><button class="mo" onclick="saveProfile()">💾 Сохранить</button></div>
 </div></div>
 
 <div class="mov" id="cs-mov"><div class="modal" style="max-width:380px">
@@ -789,7 +815,7 @@ a{color:var(--acc);}
 <div class="mov" id="add-acc-mov"><div class="modal" style="max-width:400px">
   <div class="mhdr"><h3>➕ Добавить аккаунт</h3><button class="mx" onclick="closeMov('add-acc-mov')">✕</button></div>
   <div class="afield"><span class="afield-pre">@</span><input class="ainp pre" type="text" id="aa-un" placeholder="username" oninput="cleanUn(this)"></div>
-  <div class="afield"><span class="afield-ic">ud83dudd12</span><input class="ainp ic" type="password" id="aa-pw" placeholder="Пароль"></div>
+  <div class="afield"><span class="afield-ic">🔒</span><input class="ainp ic" type="password" id="aa-pw" placeholder="Пароль"></div>
   <div class="aerr hidden" id="aa-err">❌ <span id="aa-err-t"></span></div>
   <div class="mftr"><button class="mc" onclick="closeMov('add-acc-mov')">Отмена</button><button class="mo" onclick="addAccount()">Войти</button></div>
 </div></div>
@@ -873,7 +899,7 @@ let curTheme=localStorage.getItem('nx-theme')||'blue';
 let accounts=JSON.parse(localStorage.getItem('nx-accounts')||'[]');
 const THEMES=['blue','purple','green','red','gold'];
 const THEME_COLORS={'blue':'#2b8af5','purple':'#8b5cf6','green':'#10b981','red':'#ef4444','gold':'#f59e0b'};
-const EMJS={'ud83dude0a':'ud83dude00ud83dude01ud83dude02ud83eudd23ud83dude03ud83dude04ud83dude05ud83dude06ud83dude09ud83dude0aud83dude0bud83dude0eud83dude0dud83eudd70ud83dude18ud83dude42ud83dude10ud83eudd14ud83eudd17ud83dude12ud83dude1eud83dude14ud83dude22ud83dude2dud83dude24ud83dude20ud83dude21ud83eudd2fud83dude33ud83eudd7aud83dude31ud83dude2aud83dude34ud83eudd74ud83eudd27ud83dude37ud83eudd11ud83eudd20ud83eudd73','ud83dudc4d':'ud83dudc4dud83dudc4eud83dudc4c✌️ud83eudd1eud83dudd96ud83eudd1fud83eudd18ud83eudd19ud83dudc48ud83dudc49ud83dudc46ud83dudc47✋ud83eudd1aud83dudd90ud83dudc4bud83dudcaaud83dude4fud83eudef6ud83dudc4fud83eudd32','❤️':'❤️ud83eudde1ud83dudc9bud83dudc9aud83dudc99ud83dudc9cud83dudda4ud83eudd0dud83eudd0eud83dudc94❣️ud83dudc95ud83dudc9eud83dudc93ud83dudc97ud83dudc96ud83dudc98ud83dudc9d','ud83cudf89':'ud83cudf89ud83cudf8aud83cudf88ud83cudf81ud83cudf80ud83cudf82ud83cudf86ud83cudf87✨ud83cudf1f⭐ud83dudcabud83dudd25ud83dudca5ud83cudf08ud83cudfb5ud83cudfb6ud83cudfb8ud83cudfa4ud83cudfa7','ud83dudc31':'ud83dudc31ud83dudc36ud83dudc2dud83dudc30ud83eudd8aud83dudc3bud83dudc3cud83dudc28ud83dudc2fud83eudd81ud83dudc2eud83dudc37ud83dudc38ud83dudc35ud83dudc14ud83dudc27ud83eudd8bud83dudc1eud83dudc1c','ud83cudf55':'ud83cudf55ud83cudf54ud83cudf2eud83cudf2fud83eudd59ud83cudf63ud83cudf5cud83cudf5dud83cudf72ud83eudd58ud83eudd5aud83cudf73ud83eudd5eud83eudd53ud83eudd69ud83cudf57ud83cudf56ud83cudf2dud83cudf5fud83cudf66ud83cudf67ud83cudf69ud83cudf6aud83cudf82ud83cudf70ud83euddc1ud83cudf6bud83cudf6c','⚽':'⚽ud83cudfc0ud83cudfc8⚾ud83cudfbeud83cudfd0ud83cudfb1ud83cudfd3ud83cudff8ud83eudd4a⛳ud83cudfafud83cudfaeud83cudfb2ud83cudccf','ud83cudf0d':'ud83cudf0dud83cudf0eud83cudf0fud83duddfa️ud83euddedud83cudf0b⛰️ud83cudfd4️ud83cudfd5️ud83cudfd6️ud83cudfdc️ud83cudfdd️ud83cudfdb️ud83cudfe0ud83cudfe1ud83cudfe2ud83cudfe6ud83cudfe8ud83cudfeaud83cudfeb'};
+const EMJS={'😊':'😀😁😂🤣😃😄😅😆😉😊😋😎😍🥰😘🙂😐🤔🤗😒😞😔😢😭😤😠😡🤯😳🥺😱😪😴🥴🤧😷🤑🤠🥳','👍':'👍👎👌✌️🤞🖖🤟🤘🤙👈👉👆👇✋🤚🖐👋💪🙏🫶👏🤲','❤️':'❤️🧡💛💚💙💜🖤🤍🤎💔❣️💕💞💓💗💖💘💝','🎉':'🎉🎊🎈🎁🎀🎂🎆🎇✨🌟⭐💫🔥💥🌈🎵🎶🎸🎤🎧','🐱':'🐱🐶🐭🐰🦊🐻🐼🐨🐯🦁🐮🐷🐸🐵🐔🐧🦋🐞🐜','🍕':'🍕🍔🌮🌯🥙🍣🍜🍝🍲🥘🥚🍳🥞🥓🥩🍗🍖🌭🍟🍦🍧🍩🍪🎂🍰🧁🍫🍬','⚽':'⚽🏀🏈⚾🎾🏐🎱🏓🏸🥊⛳🎯🎮🎲🃏','🌍':'🌍🌎🌏🗺️🧭🌋⛰️🏔️🏕️🏖️🏜️🏝️🏛️🏠🏡🏢🏦🏨🏪🏫'};
 const AVCOLS=['#2b8af5','#7c5ce4','#10b981','#f59e0b','#ef4444','#06b6d4','#ec4899','#14b8a6','#f97316','#84cc16'];
 
 /* Sound */
@@ -1082,29 +1108,68 @@ function upsertChat(c){const i=chats.findIndex(x=>x.id===c.id);if(i!==-1)chats[i
 function renderChatList(list){
   list=list||chats;
   const el=document.getElementById('chat-list');
-  if(!list.length){el.innerHTML=`<div class="empty-sb">${esc(T('noChats'))}</div>`;return;}
+  const favCount=JSON.parse(localStorage.getItem('nx-favorites')||'[]').length;
+  const favItem=`<div class="ci ${curChat==='__favorites__'?'act':''}" onclick="openFavoritesChat()" style="margin-bottom:2px">
+    <div class="ava"><div class="av av-md" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">⭐</div></div>
+    <div class="ci-info">
+      <div class="ci-top"><div class="ci-name">Избранное</div></div>
+      <div class="ci-bot"><div class="ci-prev" style="color:var(--tx3)">${favCount?favCount+' сохранённых':'Сохраняй сообщения'}</div></div>
+    </div></div>`;
+  if(!list.length){el.innerHTML=favItem+`<div class="empty-sb">${esc(T('noChats'))}</div>`;return;}
   const pins=list.filter(c=>c.isPinnedByUser);
   const rest=list.filter(c=>!c.isPinnedByUser);
   const dms=rest.filter(c=>c.type==='dm');
   const grps=rest.filter(c=>c.type==='group');
   const chs=rest.filter(c=>c.type==='channel');
-  let h='';
-  if(pins.length)h+='<div class="sec-l">ud83dudccc Закреплённые</div>'+pins.map(ciH).join('');
+  let h=favItem;
+  if(pins.length)h+='<div class="sec-l">📌 Закреплённые</div>'+pins.map(ciH).join('');
   if(pins.length&&(dms.length||grps.length||chs.length))h+='<div class="pinned-sep"><div class="pinned-sep-line"></div><div class="pinned-sep-text">Остальные чаты</div><div class="pinned-sep-line"></div></div>';
   if(dms.length)h+=dms.map(ciH).join('');
-  if(grps.length)h+='<div class="sec-l">ud83dudc65 '+T('chats')+'</div>'+grps.map(ciH).join('');
-  if(chs.length)h+='<div class="sec-l">ud83dudce2 Каналы</div>'+chs.map(ciH).join('');
+  if(grps.length)h+='<div class="sec-l">👥 '+T('chats')+'</div>'+grps.map(ciH).join('');
+  if(chs.length)h+='<div class="sec-l">📢 Каналы</div>'+chs.map(ciH).join('');
   el.innerHTML=h;
+}
+
+function openFavoritesChat(){
+  curChat='__favorites__';
+  renderChatList();
+  const ph=document.getElementById('ph');
+  const cv=document.getElementById('chat-view');
+  ph.style.display='none';
+  cv.style.display='flex';
+  // Set header
+  document.getElementById('ch-name').innerHTML='⭐ Избранное';
+  document.getElementById('ch-sub').textContent='Сохранённые сообщения';
+  const avEl=document.getElementById('ch-av');
+  avEl.innerHTML='<div class="av av-md" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">⭐</div>';
+  // Render favorites as messages
+  const msgsEl=document.getElementById('msgs');
+  const favs=JSON.parse(localStorage.getItem('nx-favorites')||'[]');
+  if(!favs.length){msgsEl.innerHTML='<div class="empty-n" style="margin:auto;text-align:center;padding:40px 20px"><div style="font-size:48px;margin-bottom:12px">⭐</div><div style="font-size:16px;color:var(--tx2);font-weight:600">Избранное пусто</div><div style="font-size:13px;color:var(--tx3);margin-top:6px">Сохраняй сообщения через контекстное меню</div></div>';return;}
+  msgsEl.innerHTML=favs.map((f,i)=>{
+    const ic=f.type==='voice'?'🎤':f.fileMime?.startsWith('image/')?'🖼':f.type==='file'?'📎':'💬';
+    const text=f.content||f.fileName||'Голосовое сообщение';
+    const date=new Date(f.addedAt).toLocaleDateString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+    return `<div class="mr out"><div class="mbub">
+      <div style="font-size:10px;color:var(--acc);font-weight:700;margin-bottom:4px">из: ${esc(f.chatName||'Чат')} · ${esc(f.senderName||'')}</div>
+      <span class="m-text">${ic} ${esc((text||'').slice(0,200))}</span>
+      <div class="m-meta"><span class="m-time">${date}</span><button onclick="removeFav(${i});openFavoritesChat()" style="background:none;border:none;color:var(--tx3);cursor:pointer;font-size:11px;padding:0 2px" title="Удалить">🗑</button></div>
+    </div></div>`;
+  }).join('');
+  msgsEl.scrollTop=msgsEl.scrollHeight;
+  // Hide input for favorites
+  document.getElementById('irow').style.display='none';
+  if(isMobile())hideSB();
 }
 function ciH(c){
   const act=c.id===curChat;
   const last=c.lastMessage;
   let prev=T('noChats').split('\n')[0]||'';
   if(last){const mine=last.senderId===me.id;const pre=c.type!=='dm'&&!mine?(last.senderName+': '):(mine?'Вы: ':'');
-  prev=last.type==='voice'?pre+'ud83cudfa4':last.type==='file'?pre+'ud83dudcce '+(last.text||''):pre+(last.text||'');}
+  prev=last.type==='voice'?pre+'🎤':last.type==='file'?pre+'📎 '+(last.text||''):pre+(last.text||'');}
   const od=c.type==='dm'&&c.online?'<div class="on-dot md"></div>':'';
   const vb=c.verified?'<span class="verified-inline">✓</span>':'';
-  const ic=c.type==='channel'?'ud83dudce2 ':c.type==='group'?'ud83dudc65 ':'';
+  const ic=c.type==='channel'?'📢 ':c.type==='group'?'👥 ':'';
   const pinIc=c.isPinnedByUser?'<span class="ci-pin" title="Закреплён">📌</span>':'';
   const timeStr=last?fmtT(last.createdAt):'';
   return`<div class="ci ${act?'act':''}" onclick="openChat('${c.id}')" oncontextmenu="ctxChat(event,'${c.id}')">
@@ -1132,6 +1197,7 @@ async function togglePinChat(chatId,isPinned){
 /* ━━━━━━━━ OPEN CHAT ━━━━━━━━━━━━━━━━━━━━━━ */
 async function openChat(id){
   curChat=id;editMsgId=null;pendingFile=null;
+  document.getElementById('irow').style.display='';
   if(emjOpen)closeEmj();
   document.getElementById('edit-notice').style.display='none';
   document.getElementById('pf-bar').style.display='none';
@@ -1160,7 +1226,7 @@ function updChatHeader(chat){
   const av=document.getElementById('ch-av');
   av.innerHTML=avH(chat,'md')+(chat.type==='dm'&&chat.online?'<div class="on-dot md"></div>':'');
   const vb=chat.verified?'<span class="verified-inline">✓</span>':'';
-  document.getElementById('ch-name').innerHTML=esc(chat.name)+vb+(chat.type==='channel'?'<span class="ch-tag ch">ud83dudce2</span>':chat.type==='group'?'<span class="ch-tag gr">ud83dudc65</span>':'');
+  document.getElementById('ch-name').innerHTML=esc(chat.name)+vb+(chat.type==='channel'?'<span class="ch-tag ch">📢</span>':chat.type==='group'?'<span class="ch-tag gr">👥</span>':'');
   const sub=document.getElementById('ch-sub');
   if(chat.type==='dm'){
     const other=chat.members?.find(m=>m.id!==me.id);
@@ -1178,7 +1244,7 @@ function updPinBar(chat){
   if(!pm){bar.style.display='none';return;}
   bar.style.display='flex';
   document.getElementById('pin-lbl').textContent=T('pinned');
-  document.getElementById('pin-val').textContent=pm.type==='voice'?'ud83cudfa4':pm.type==='file'?'ud83dudcce '+pm.fileName:pm.text;
+  document.getElementById('pin-val').textContent=pm.type==='voice'?'🎤':pm.type==='file'?'📎 '+pm.fileName:pm.text;
 }
 async function loadMsgs(chatId){
   // Stop and clear any playing audio
@@ -1198,8 +1264,8 @@ function scrollToPin(){
 }
 function openPinnedList(pinned){
   const html=pinned.map(m=>`<div style="padding:10px;background:var(--bg3);border-radius:10px;margin-bottom:6px;cursor:pointer;border:1px solid var(--brd)" onclick="closePov();const el=document.getElementById('m-${m.id}');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});">
-    <div style="font-size:11px;color:var(--acc);font-weight:700;margin-bottom:3px">ud83dudccc ${esc(m.senderName)}</div>
-    <div style="font-size:13px;color:var(--tx2)">${m.type==='voice'?'ud83cudfa4 Голосовое':m.type==='file'?'ud83dudcce '+esc(m.fileName||''):esc(m.text.slice(0,80))}</div>
+    <div style="font-size:11px;color:var(--acc);font-weight:700;margin-bottom:3px">📌 ${esc(m.senderName)}</div>
+    <div style="font-size:13px;color:var(--tx2)">${m.type==='voice'?'🎤 Голосовое':m.type==='file'?'📎 '+esc(m.fileName||''):esc(m.text.slice(0,80))}</div>
   </div>`).join('');
   document.getElementById('p-body').innerHTML=html;
   document.getElementById('p-title').textContent=T('pinnedMsgs');
@@ -1219,7 +1285,7 @@ function renderMsgs(chatId){
   const el=document.getElementById('msgs');
   const chat=chats.find(c=>c.id===chatId);
   const isGrp=chat?.type==='group'||chat?.type==='channel';
-  if(!msgs.length){el.innerHTML='<div class="empty-n" style="margin:auto">ud83dudc4b</div>';return;}
+  if(!msgs.length){el.innerHTML='<div class="empty-n" style="margin:auto">👋</div>';return;}
   let h='',lastDate=null;
   for(const msg of msgs){
     const d=new Date(msg.createdAt).toLocaleDateString(lang==='en'?'en-US':'ru-RU',{day:'numeric',month:'long'});
@@ -1519,7 +1585,7 @@ async function loadChs(q=''){
     return`<div class="uli" onclick="openChDetail('${c.id}')">
       <div class="ava">${avH(c,'sm')}</div>
       <div style="flex:1;min-width:0">
-        <div class="uli-n">ud83dudce2 ${esc(c.name)}${vb}${c.username?`<span style="color:var(--tx3);font-size:11px;font-weight:400"> @${esc(c.username)}</span>`:''}${isMem?'<span style="font-size:10px;color:var(--grn);margin-left:4px">✓ Подписан</span>':''}</div>
+        <div class="uli-n">📢 ${esc(c.name)}${vb}${c.username?`<span style="color:var(--tx3);font-size:11px;font-weight:400"> @${esc(c.username)}</span>`:''}${isMem?'<span style="font-size:10px;color:var(--grn);margin-left:4px">✓ Подписан</span>':''}</div>
         <div class="uli-s">${c.subscribersCount||0} подп.${c.description?' · '+esc(c.description.slice(0,50)):''}</div>
       </div></div>`;
   }).join('');
@@ -1565,13 +1631,13 @@ function renderProfilePanel(user,isMe){
     <div class="pf-un">@${esc(user.username)}</div>
     ${user.bio?`<div class="pf-bio">${esc(user.bio)}</div>`:''}
     <div class="pf-stats">
-      <div class="stat"><div class="stat-v">${user.online?'ud83dudfe2 '+(lang==='en'?'Online':'Онлайн'):'⚫ '+(lang==='en'?'Offline':'Оффлайн')}</div><div class="stat-l">${lang==='en'?'Status':'Статус'}</div></div>
+      <div class="stat"><div class="stat-v">${user.online?'🟢 '+(lang==='en'?'Online':'Онлайн'):'⚫ '+(lang==='en'?'Offline':'Оффлайн')}</div><div class="stat-l">${lang==='en'?'Status':'Статус'}</div></div>
       <div class="stat"><div class="stat-v" style="font-size:11px">${joined}</div><div class="stat-l">${lang==='en'?'Joined':'Регистрация'}</div></div>
-      ${bday?`<div class="stat"><div class="stat-v">ud83cudf82 ${bday}</div><div class="stat-l">${lang==='en'?'Birthday':'День рождения'}</div></div>`:''}
+      ${bday?`<div class="stat"><div class="stat-v">🎂 ${bday}</div><div class="stat-l">${lang==='en'?'Birthday':'День рождения'}</div></div>`:''}
     </div>
     <div class="pf-acts">
       ${isMe?`<button class="btn-pf pri" onclick="openPfEdit()">✏️ ${T('editProfile')}</button>`
-      :`<button class="btn-pf pri" onclick="startDMFromProfile('${user.id}')">ud83dudcac Написать</button>`}
+      :`<button class="btn-pf pri" onclick="startDMFromProfile('${user.id}')">💬 Написать</button>`}
     </div>`;
 }
 async function startDMFromProfile(uid){closePov();const r=await api('/api/chats/dm','POST',{userId:uid});if(!r.ok)return;const chat=await r.json();upsertChat(chat);renderChatList();openChat(chat.id);}
@@ -1617,7 +1683,7 @@ async function saveProfile(){
 function openChatInfo(){
   if(!curChat)return;const chat=chats.find(c=>c.id===curChat);if(!chat)return;
   if(chat.type==='dm'){const o=chat.members?.find(m=>m.id!==me.id);if(o)openUserProfile(o.id);return;}
-  renderGrpPanel(chat);openPov(chat.type==='channel'?'ud83dudce2 Канал':'ud83dudc65 Группа');
+  renderGrpPanel(chat);openPov(chat.type==='channel'?'📢 Канал':'👥 Группа');
 }
 function renderGrpPanel(chat){
   const isAdmin=chat.ownerId===me.id||(chat.roles&&chat.roles[me.id]==='admin');
@@ -1626,14 +1692,14 @@ function renderGrpPanel(chat){
     <div style="display:flex;justify-content:center;margin-bottom:10px"><div class="ava">${avH({...chat,displayName:chat.name},'xl')}</div></div>
     <div style="font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px">${esc(chat.name)}${vb}</div>
     ${chat.username?`<div style="font-size:12px;color:var(--tx3);margin-top:2px">@${esc(chat.username)}</div>`:''}
-    <div style="font-size:12px;color:var(--tx2);margin-top:4px">${chat.type==='channel'?`ud83dudce2 ${chat.members?.length||0} ${T('subscribers')}`:`ud83dudc65 ${chat.members?.length||0} ${T('members')}`}</div>
+    <div style="font-size:12px;color:var(--tx2);margin-top:4px">${chat.type==='channel'?`📢 ${chat.members?.length||0} ${T('subscribers')}`:`👥 ${chat.members?.length||0} ${T('members')}`}</div>
     ${chat.description?`<div style="font-size:13px;color:var(--tx2);margin-top:8px;line-height:1.6;padding:0 8px">${esc(chat.description)}</div>`:''}
     ${isAdmin?`<div style="margin-top:8px">
       <input id="ch-desc-inp-${chat.id}" style="width:100%;background:var(--bg4);border:1px solid var(--brd);border-radius:10px;padding:8px 12px;color:var(--tx);font-size:12.5px;text-align:center" placeholder="Описание канала (необязательно)" value="${esc(chat.description||'')}">
       <button onclick="saveChDesc('${chat.id}')" style="margin-top:6px;width:100%;background:var(--accG);border:none;border-radius:10px;padding:8px;color:#fff;font-size:13px;font-weight:600;cursor:pointer">Сохранить описание</button>
     </div>`:''}
   </div>
-  ${isAdmin?`<div style="margin-bottom:12px"><label class="ava-up" for="chat-ava-inp"><div class="ava-up-prev">${chat.avatar?`<img src="${esc(chat.avatar)}">`:'ud83dudce2'}</div><div style="font-size:12px;color:var(--tx2)">Изменить аватарку</div><input type="file" id="chat-ava-inp" accept="image/*" style="display:none" onchange="uploadChatAva('${chat.id}',this)"></label></div>`:''}
+  ${isAdmin?`<div style="margin-bottom:12px"><label class="ava-up" for="chat-ava-inp"><div class="ava-up-prev">${chat.avatar?`<img src="${esc(chat.avatar)}">`:'📢'}</div><div style="font-size:12px;color:var(--tx2)">Изменить аватарку</div><input type="file" id="chat-ava-inp" accept="image/*" style="display:none" onchange="uploadChatAva('${chat.id}',this)"></label></div>`:''}
   <div class="sec-l" style="padding:0 0 8px">${chat.type==='channel'?T('subscribers'):T('members')}</div>`;
   (chat.members||[]).forEach(m=>{
     const role=m.id===chat.ownerId?'owner':(chat.roles&&chat.roles[m.id])||null;
@@ -1651,10 +1717,10 @@ function toggleRoleMenu(chatId,userId,curRole){
   const existing=document.getElementById('role-dd-'+userId);if(existing){existing.remove();return;}
   const el=document.createElement('div');el.className='role-dd';el.id='role-dd-'+userId;
   el.innerHTML=`
-    <div class="role-opt" onclick="setRole('${chatId}','${userId}','admin')">ud83dudc51 ${lang==='en'?'Make Admin':'Назначить админом'}</div>
-    <div class="role-opt" onclick="setRole('${chatId}','${userId}','mod')">ud83dudee1 ${lang==='en'?'Make Moderator':'Назначить модератором'}</div>
+    <div class="role-opt" onclick="setRole('${chatId}','${userId}','admin')">👑 ${lang==='en'?'Make Admin':'Назначить админом'}</div>
+    <div class="role-opt" onclick="setRole('${chatId}','${userId}','mod')">🛡 ${lang==='en'?'Make Moderator':'Назначить модератором'}</div>
     ${curRole?`<div class="role-opt" onclick="setRole('${chatId}','${userId}','remove')">✕ ${lang==='en'?'Remove role':'Снять роль'}</div>`:''}
-    <div class="role-opt danger" onclick="kickMember('${chatId}','${userId}')">ud83dudeab ${lang==='en'?'Kick':'Исключить'}</div>`;
+    <div class="role-opt danger" onclick="kickMember('${chatId}','${userId}')">🚫 ${lang==='en'?'Kick':'Исключить'}</div>`;
   document.getElementById('mem-'+userId).insertAdjacentElement('afterend',el);
 }
 async function setRole(chatId,userId,role){
@@ -1683,14 +1749,14 @@ async function openChatSettings(){
   const isOwner=chat.ownerId===me.id;
   document.getElementById('cs-title').textContent=chat.type==='dm'?(targetUser?.displayName||'Чат'):esc(chat.name);
   document.getElementById('cs-body').innerHTML=`
-    <div class="csi" onclick="toggleMute('${chat.id}',${isMuted})"><div class="csi-ic">${isMuted?'ud83dudd14':'ud83dudd15'}</div><div class="csi-t"><div class="csi-n">${isMuted?T('unmute'):T('mute')}</div></div></div>
+    <div class="csi" onclick="toggleMute('${chat.id}',${isMuted})"><div class="csi-ic">${isMuted?'🔔':'🔕'}</div><div class="csi-t"><div class="csi-n">${isMuted?T('unmute'):T('mute')}</div></div></div>
     ${chat.type==='dm'&&targetUser?`
-    <div class="csi" onclick="blockUser('${targetUser.id}',${isBlocked})"><div class="csi-ic">${isBlocked?'✅':'ud83dudeab'}</div><div class="csi-t"><div class="csi-n">${isBlocked?T('unblock'):T('block')}</div></div></div>
-    <div class="csi" onclick="openUserProfile('${targetUser.id}');closeMov('cs-mov')"><div class="csi-ic">ud83dudc64</div><div class="csi-t"><div class="csi-n">${T('profile')}</div><div class="csi-s">@${esc(targetUser.username)}</div></div></div>
+    <div class="csi" onclick="blockUser('${targetUser.id}',${isBlocked})"><div class="csi-ic">${isBlocked?'✅':'🚫'}</div><div class="csi-t"><div class="csi-n">${isBlocked?T('unblock'):T('block')}</div></div></div>
+    <div class="csi" onclick="openUserProfile('${targetUser.id}');closeMov('cs-mov')"><div class="csi-ic">👤</div><div class="csi-t"><div class="csi-n">${T('profile')}</div><div class="csi-s">@${esc(targetUser.username)}</div></div></div>
     `:chat.type!=='dm'?`<div class="csi" onclick="openChatInfo();closeMov('cs-mov')"><div class="csi-ic">ℹ️</div><div class="csi-t"><div class="csi-n">${T('members')}</div><div class="csi-s">${chat.members?.length||0}</div></div></div>`:''}
-    <div class="csi" onclick="togglePinChat('${chat.id}',${chat.isPinnedByUser||false});closeMov('cs-mov')"><div class="csi-ic">ud83dudccc</div><div class="csi-t"><div class="csi-n">${chat.isPinnedByUser?T('unpinChat'):T('pinChat')}</div></div></div>
+    <div class="csi" onclick="togglePinChat('${chat.id}',${chat.isPinnedByUser||false});closeMov('cs-mov')"><div class="csi-ic">📌</div><div class="csi-t"><div class="csi-n">${chat.isPinnedByUser?T('unpinChat'):T('pinChat')}</div></div></div>
     <div style="height:1px;background:var(--brd);margin:4px 0"></div>
-    <div class="csi" onclick="deleteChat('${chat.id}',${chat.type==='dm'||isOwner})"><div class="csi-ic" style="font-size:18px">ud83duddd1</div><div class="csi-t"><div class="csi-n" style="color:var(--red)">${T('deleteChat')}</div><div class="csi-s">${chat.type==='dm'||isOwner?'Для всех участников':'Покинуть группу'}</div></div></div>`;
+    <div class="csi" onclick="deleteChat('${chat.id}',${chat.type==='dm'||isOwner})"><div class="csi-ic" style="font-size:18px">🗑</div><div class="csi-t"><div class="csi-n" style="color:var(--red)">${T('deleteChat')}</div><div class="csi-s">${chat.type==='dm'||isOwner?'Для всех участников':'Покинуть группу'}</div></div></div>`;
   openMov('cs-mov');
 }
 async function toggleMute(chatId,isMuted){
@@ -1740,7 +1806,7 @@ function renderSettingsBody(){
   const b=document.getElementById('s-body');
   b.innerHTML=`
     <!-- Accounts -->
-    <div class="s-sec"><div class="s-sec-title">ud83dudc64 ${T('accounts')}</div>
+    <div class="s-sec"><div class="s-sec-title">👤 ${T('accounts')}</div>
       <div class="accs-list">
         ${accounts.map((a,i)=>`<div class="acc-row ${a.user.id===me.id?'active-acc':''}">
           <div class="ava">${avH({...a.user,displayName:a.user.displayName||a.user.username},'sm')}</div>
@@ -1756,51 +1822,51 @@ function renderSettingsBody(){
       <div class="s-row" onclick="openGlobalSearch();closeSettings()"><div class="s-ic" style="background:rgba(43,138,245,.12)">🔍</div><div class="s-info"><div class="s-n">Глобальный поиск</div><div class="s-s">Люди, каналы, файлы</div></div><span class="s-r">→</span></div>
     </div>
     <!-- Chats -->
-    <div class="s-sec"><div class="s-sec-title">ud83dudcac ${T('chats')}</div>
-      <div class="s-row" onclick="openDMM();closeSettings()"><div class="s-ic" style="background:rgba(43,138,245,.15)">ud83dudcac</div><div class="s-info"><div class="s-n">Новое сообщение</div></div></div>
-      <div class="s-row" onclick="openGrpM();closeSettings()"><div class="s-ic" style="background:rgba(34,197,94,.12)">ud83dudc65</div><div class="s-info"><div class="s-n">${T('createGroup')}</div></div></div>
-      <div class="s-row" onclick="openChDisc();closeSettings()"><div class="s-ic" style="background:rgba(245,158,11,.12)">ud83dudce2</div><div class="s-info"><div class="s-n">Каналы</div></div></div>
-      <div class="s-row" onclick="openMov('ch-create-mov');closeSettings()"><div class="s-ic" style="background:rgba(251,146,60,.12)">ud83dudce1</div><div class="s-info"><div class="s-n">${T('createChannel')}</div></div></div>
+    <div class="s-sec"><div class="s-sec-title">💬 ${T('chats')}</div>
+      <div class="s-row" onclick="openDMM();closeSettings()"><div class="s-ic" style="background:rgba(43,138,245,.15)">💬</div><div class="s-info"><div class="s-n">Новое сообщение</div></div></div>
+      <div class="s-row" onclick="openGrpM();closeSettings()"><div class="s-ic" style="background:rgba(34,197,94,.12)">👥</div><div class="s-info"><div class="s-n">${T('createGroup')}</div></div></div>
+      <div class="s-row" onclick="openChDisc();closeSettings()"><div class="s-ic" style="background:rgba(245,158,11,.12)">📢</div><div class="s-info"><div class="s-n">Каналы</div></div></div>
+      <div class="s-row" onclick="openMov('ch-create-mov');closeSettings()"><div class="s-ic" style="background:rgba(251,146,60,.12)">📡</div><div class="s-info"><div class="s-n">${T('createChannel')}</div></div></div>
     </div>
     <!-- Privacy -->
-    <div class="s-sec"><div class="s-sec-title">ud83dudd12 ${T('privacy')}</div>
-      <div class="s-row"><div class="s-ic" style="background:rgba(34,197,94,.12)">ud83dudc41</div><div class="s-info"><div class="s-n">${T('showOnline')}</div><div class="s-s">${setts.showOnline?'Видно':'Скрыто'}</div></div><label class="tog" onclick="event.stopPropagation()"><input type="checkbox" ${setts.showOnline?'checked':''} onchange="togSett('showOnline')"><div class="tog-tr"></div><div class="tog-th"></div></label></div>
+    <div class="s-sec"><div class="s-sec-title">🔒 ${T('privacy')}</div>
+      <div class="s-row"><div class="s-ic" style="background:rgba(34,197,94,.12)">👁</div><div class="s-info"><div class="s-n">${T('showOnline')}</div><div class="s-s">${setts.showOnline?'Видно':'Скрыто'}</div></div><label class="tog" onclick="event.stopPropagation()"><input type="checkbox" ${setts.showOnline?'checked':''} onchange="togSett('showOnline')"><div class="tog-tr"></div><div class="tog-th"></div></label></div>
     </div>
     <!-- Messaging -->
     <div class="s-sec"><div class="s-sec-title">⌨️ ${T('messaging')}</div>
       <div class="s-row"><div class="s-ic" style="background:rgba(43,138,245,.12)">⏎</div><div class="s-info"><div class="s-n">${T('sendEnter')}</div></div><label class="tog" onclick="event.stopPropagation()"><input type="checkbox" ${setts.sendOnEnter?'checked':''} onchange="togSett('sendOnEnter')"><div class="tog-tr"></div><div class="tog-th"></div></label></div>
-      <div class="s-row"><div class="s-ic" style="background:rgba(34,197,94,.12)">ud83dudd14</div><div class="s-info"><div class="s-n">${T('notifications')}</div></div><label class="tog" onclick="event.stopPropagation()"><input type="checkbox" ${setts.notifications?'checked':''} onchange="togSett('notifications')"><div class="tog-tr"></div><div class="tog-th"></div></label></div>
-      <div class="s-row"><div class="s-ic" style="background:rgba(245,158,11,.12)">ud83dudd0a</div><div class="s-info"><div class="s-n">Звук сообщений</div></div><label class="tog" onclick="event.stopPropagation()"><input type="checkbox" ${setts.sound?'checked':''} onchange="togSett('sound')"><div class="tog-tr"></div><div class="tog-th"></div></label></div>
+      <div class="s-row"><div class="s-ic" style="background:rgba(34,197,94,.12)">🔔</div><div class="s-info"><div class="s-n">${T('notifications')}</div></div><label class="tog" onclick="event.stopPropagation()"><input type="checkbox" ${setts.notifications?'checked':''} onchange="togSett('notifications')"><div class="tog-tr"></div><div class="tog-th"></div></label></div>
+      <div class="s-row"><div class="s-ic" style="background:rgba(245,158,11,.12)">🔊</div><div class="s-info"><div class="s-n">Звук сообщений</div></div><label class="tog" onclick="event.stopPropagation()"><input type="checkbox" ${setts.sound?'checked':''} onchange="togSett('sound')"><div class="tog-tr"></div><div class="tog-th"></div></label></div>
     </div>
     <!-- Appearance -->
-    <div class="s-sec"><div class="s-sec-title">ud83cudfa8 ${T('appearance')}</div>
-      <div class="s-row" onclick=""><div class="s-ic" style="background:rgba(139,92,246,.15)">ud83cudf13</div><div class="s-info"><div class="s-n">${T('theme')}</div></div></div>
+    <div class="s-sec"><div class="s-sec-title">🎨 ${T('appearance')}</div>
+      <div class="s-row" onclick=""><div class="s-ic" style="background:rgba(139,92,246,.15)">🌓</div><div class="s-info"><div class="s-n">${T('theme')}</div></div></div>
       <div class="theme-grid" style="padding:4px 8px 10px">
         ${THEMES.map(t=>`<div class="theme-btn ${curTheme===t?'act':''}" style="background:${THEME_COLORS[t]}" onclick="setTheme('${t}');renderSettingsBody()" title="${t}"></div>`).join('')}
       </div>
-      <div class="s-row"><div class="s-ic" style="background:rgba(43,138,245,.12)">ud83cudf10</div><div class="s-info"><div class="s-n">${T('language')}</div><div class="s-s">${lang==='ru'?'Русский':'English'}</div></div>
+      <div class="s-row"><div class="s-ic" style="background:rgba(43,138,245,.12)">🌐</div><div class="s-info"><div class="s-n">${T('language')}</div><div class="s-s">${lang==='ru'?'Русский':'English'}</div></div>
         <select style="background:var(--bg4);border:1px solid var(--brd2);border-radius:8px;color:var(--tx);padding:5px 8px;font-size:12px;cursor:pointer" onchange="setLang(this.value)">
-          <option value="ru" ${lang==='ru'?'selected':''}>ud83cuddf7ud83cuddfa Русский</option>
-          <option value="en" ${lang==='en'?'selected':''}>ud83cuddecud83cudde7 English</option>
+          <option value="ru" ${lang==='ru'?'selected':''}>🇷🇺 Русский</option>
+          <option value="en" ${lang==='en'?'selected':''}>🇬🇧 English</option>
         </select>
       </div>
     </div>
     <!-- Profile -->
-    <div class="s-sec"><div class="s-sec-title">ud83dudc64 ${T('profile')}</div>
-      <div class="s-row" onclick="openUserProfile('${me.id}');closeSettings()"><div class="s-ic" style="background:rgba(43,138,245,.15)">ud83dudc41</div><div class="s-info"><div class="s-n">${T('profile')}</div><div class="s-s">@${me.username}</div></div></div>
+    <div class="s-sec"><div class="s-sec-title">👤 ${T('profile')}</div>
+      <div class="s-row" onclick="openUserProfile('${me.id}');closeSettings()"><div class="s-ic" style="background:rgba(43,138,245,.15)">👁</div><div class="s-info"><div class="s-n">${T('profile')}</div><div class="s-s">@${me.username}</div></div></div>
       <div class="s-row" onclick="openPfEdit();closeSettings()"><div class="s-ic" style="background:rgba(43,138,245,.15)">✏️</div><div class="s-info"><div class="s-n">${T('editProfile')}</div></div></div>
       <div class="s-row" onclick="openChangePassword()"><div class="s-ic" style="background:rgba(239,68,68,.15)">🔐</div><div class="s-info"><div class="s-n">Сменить пароль</div><div class="s-s">Изменить пароль аккаунта</div></div><span class="s-r">→</span></div>
     </div>
     ${isNm?`<!-- ADMIN PANEL -->
-    <div class="s-sec"><div class="s-sec-title">ud83dudee1 ${T('adminPanel')}</div>
-      <div class="s-row" onclick="openAdminPanel('users')"><div class="s-ic" style="background:linear-gradient(135deg,#ef4444,#f97316)">ud83dudc65</div><div class="s-info"><div class="s-n">${T('allUsers')}</div></div><span class="s-r">→</span></div>
-      <div class="s-row" onclick="openAdminPanel('chats')"><div class="s-ic" style="background:linear-gradient(135deg,#7c5ce4,#2b8af5)">ud83dudcac</div><div class="s-info"><div class="s-n">${T('allChats')}</div></div><span class="s-r">→</span></div>
+    <div class="s-sec"><div class="s-sec-title">🛡 ${T('adminPanel')}</div>
+      <div class="s-row" onclick="openAdminPanel('users')"><div class="s-ic" style="background:linear-gradient(135deg,#ef4444,#f97316)">👥</div><div class="s-info"><div class="s-n">${T('allUsers')}</div></div><span class="s-r">→</span></div>
+      <div class="s-row" onclick="openAdminPanel('chats')"><div class="s-ic" style="background:linear-gradient(135deg,#7c5ce4,#2b8af5)">💬</div><div class="s-info"><div class="s-n">${T('allChats')}</div></div><span class="s-r">→</span></div>
     </div>`:''}
     <!-- Danger zone -->
     <div class="s-sec"><div class="s-sec-title"></div>
       <div class="dz" style="display:flex;flex-direction:column;gap:6px">
-        <button class="btn-danger" onclick="logout()">ud83dudeaa ${T('logout')}</button>
-        <button class="btn-danger" onclick="deleteMyAccount()">ud83duddd1 ${T('deleteAccount')}</button>
+        <button class="btn-danger" onclick="logout()">🚪 ${T('logout')}</button>
+        <button class="btn-danger" onclick="deleteMyAccount()">🗑 ${T('deleteAccount')}</button>
       </div>
     </div>
     <div style="text-align:center;padding:12px 0;font-size:11px;color:var(--tx3)">Nexus v4.0 · Made with ⚡</div>`;
@@ -1813,23 +1879,23 @@ async function openAdminPanel(type){
   const pov_el=document.getElementById('pov');
   if(type==='users'){
     const r=await api('/api/admin/users');if(!r.ok)return;const users=await r.json();
-    document.getElementById('p-title').textContent='ud83dudee1 '+T('allUsers');
+    document.getElementById('p-title').textContent='🛡 '+T('allUsers');
     document.getElementById('p-body').innerHTML=users.filter(u=>!u.isCreator).map(u=>`
       <div class="admin-row" style="margin-bottom:6px">
         <div class="ava">${avH({...u,displayName:u.displayName||u.username},'sm')}</div>
         <div class="admin-info">
-          <div class="admin-name">${esc(u.displayName||u.username)}${u.verified?'<span class="verified-inline" style="width:12px;height:12px;font-size:7px">✓</span>':''}${u.isBanned?'<span style="color:var(--red);font-size:10px"> ud83dudeab</span>':''}</div>
-          <div class="admin-un">@${esc(u.username)} · ${u.online?'ud83dudfe2':'⚫'}</div>
+          <div class="admin-name">${esc(u.displayName||u.username)}${u.verified?'<span class="verified-inline" style="width:12px;height:12px;font-size:7px">✓</span>':''}${u.isBanned?'<span style="color:var(--red);font-size:10px"> 🚫</span>':''}</div>
+          <div class="admin-un">@${esc(u.username)} · ${u.online?'🟢':'⚫'}</div>
         </div>
         <div class="admin-btns">
           <button class="admin-btn verify" onclick="adminVerifyUser('${u.id}')">${u.verified?'✓':'✓?'}</button>
           <button class="admin-btn ban" onclick="adminBanUser('${u.id}')">${u.isBanned?'Разбл.':'Бан'}</button>
-          <button class="admin-btn del" onclick="adminDelUser('${u.id}')">ud83duddd1</button>
+          <button class="admin-btn del" onclick="adminDelUser('${u.id}')">🗑</button>
         </div>
       </div>`).join('');
   }else{
     const r=await api('/api/admin/chats');if(!r.ok)return;const chatList=await r.json();
-    document.getElementById('p-title').textContent='ud83dudee1 '+T('allChats');
+    document.getElementById('p-title').textContent='🛡 '+T('allChats');
     document.getElementById('p-body').innerHTML=chatList.map(c=>`
       <div class="admin-row" style="margin-bottom:6px">
         <div class="ava">${avH({...c,displayName:c.name},'sm')}</div>
@@ -1876,7 +1942,7 @@ function fusr(q,listId,onCl){
   if(!filtered.length){el.innerHTML='<div class="empty-n">Не найдено</div>';return;}
   el.innerHTML=filtered.map((u,i)=>`<div class="uli ${grpMems.has(u.id)?'sel':''}">
     <div class="ava" style="position:relative">${avH(u,'sm')}${u.online?'<div class="on-dot sm"></div>':''}</div>
-    <div><div class="uli-n">${esc(u.displayName||u.username)}${u.verified?'<span class="verified-inline" style="width:12px;height:12px;font-size:7px">✓</span>':''}</div><div class="uli-s">@${esc(u.username)} · ${u.online?'ud83dudfe2 '+T('online'):'⚫ '+T('offline')}</div></div>
+    <div><div class="uli-n">${esc(u.displayName||u.username)}${u.verified?'<span class="verified-inline" style="width:12px;height:12px;font-size:7px">✓</span>':''}</div><div class="uli-s">@${esc(u.username)} · ${u.online?'🟢 '+T('online'):'⚫ '+T('offline')}</div></div>
   </div>`).join('');
   el.querySelectorAll('.uli').forEach((item,i)=>item.addEventListener('click',()=>onCl(filtered[i])));
 }
@@ -1903,7 +1969,7 @@ function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/<
 function fmtT(ts){const d=new Date(ts),n=new Date();if(d.toDateString()===n.toDateString())return d.toLocaleTimeString(lang==='en'?'en-US':'ru-RU',{hour:'2-digit',minute:'2-digit'});const y=new Date(n);y.setDate(y.getDate()-1);if(d.toDateString()===y.toDateString())return lang==='en'?'yesterday':'вчера';return d.toLocaleDateString(lang==='en'?'en-US':'ru-RU',{day:'numeric',month:'short'});}
 function fmtDur(s){return Math.floor(s/60)+':'+(s%60).toString().padStart(2,'0');}
 function fsz(b){if(!b)return'';if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(1)+' MB';}
-function fic(m){if(m.startsWith('image/'))return'ud83duddbc️';if(m.startsWith('video/'))return'ud83cudfac';if(m.startsWith('audio/'))return'ud83cudfb5';if(m.includes('pdf'))return'ud83dudcc4';if(m.includes('zip')||m.includes('rar'))return'ud83dudddc️';if(m.includes('text'))return'ud83dudcdd';return'ud83dudcce';}
+function fic(m){if(m.startsWith('image/'))return'🖼️';if(m.startsWith('video/'))return'🎬';if(m.startsWith('audio/'))return'🎵';if(m.includes('pdf'))return'📄';if(m.includes('zip')||m.includes('rar'))return'🗜️';if(m.includes('text'))return'📝';return'📎';}
 /* ━━━━━━━━ MOCK BACKEND (localStorage) ━━━━━━━━━━━━━━━━━━━━━━━━ */
 const DB={
   getUsers:()=>JSON.parse(localStorage.getItem('nx-db-users')||'[]'),
@@ -2469,26 +2535,32 @@ async function joinAndOpenChannel(chId){
 /* ── USERNAME-ONLY USER SEARCH ── */
 async function searchByUsername(q){
   const ul=document.getElementById('dm-ul');
-  if(!q||q.length<2){ul.innerHTML='';return;}
-  const clean=q.replace(/^@/,'').toLowerCase();
+  if(!q||q.length<1){ul.innerHTML='';return;}
+  const clean=q.replace(/^@/,'').toLowerCase().trim();
+  if(!clean){ul.innerHTML='';return;}
+  // Always search allUsers first (they are loaded on init)
+  const localResults=allUsers.filter(u=>u.id!==me?.id&&(
+    (u.username||'').toLowerCase().includes(clean)||
+    (u.displayName||'').toLowerCase().includes(clean)
+  ));
+  const renderUsers=(users)=>{
+    if(!users.length){ul.innerHTML='<div class="empty-n" style="padding:12px;text-align:center;color:var(--tx3);font-size:13px">Пользователей не найдено</div>';return;}
+    ul.innerHTML=users.slice(0,10).map(u=>`
+      <div class="uli" style="cursor:pointer" onclick='startDM(${JSON.stringify({id:u.id,username:u.username,displayName:u.displayName,avatar:u.avatar,avatarColor:u.avatarColor,verified:u.verified})})'>
+        <div class="ava" style="position:relative">${avH(u,'sm')}${u.online?'<div class="on-dot sm"></div>':''}</div>
+        <div><div class="uli-n">${esc(u.displayName||u.username)}${u.verified?'<span class="verified-inline" style="width:12px;height:12px;font-size:7px">✓</span>':''}</div><div class="uli-s">@${esc(u.username)}${u.online?' · 🟢 онлайн':''}</div></div>
+      </div>`).join('');
+  };
+  renderUsers(localResults);
   try{
-    const r=await api('/api/users/search?q='+encodeURIComponent(clean)+'&exact=0');
+    const r=await api('/api/users/search?q='+encodeURIComponent(clean));
     if(r.ok){
-      const users=await r.json();
-      ul.innerHTML=users.filter(u=>u.id!==me?.id).slice(0,8).map(u=>`
-        <div class="ul-item" onclick='startDM(${JSON.stringify(u)})'>
-          ${avH(u,'sm')}
-          <div class="ul-body">
-            <div class="ul-name">${esc(u.displayName||u.username)}${u.verified?'<span class="verified-inline">✓</span>':''}</div>
-            <div class="ul-sub">@${esc(u.username)}</div>
-          </div>
-        </div>`).join('');
+      const apiUsers=await r.json();
+      const merged=[...apiUsers];
+      localResults.forEach(u=>{if(!merged.find(x=>x.id===u.id))merged.push(u);});
+      renderUsers(merged.filter(u=>u.id!==me?.id));
     }
-  } catch{
-    // fallback
-    const users=allUsers.filter(u=>u.id!==me?.id&&(u.username||'').toLowerCase().includes(clean));
-    ul.innerHTML=users.slice(0,8).map(u=>`<div class="ul-item" onclick='startDM(${JSON.stringify(u)})'>${avH(u,'sm')}<div class="ul-body"><div class="ul-name">${esc(u.displayName||u.username)}</div><div class="ul-sub">@${esc(u.username)}</div></div></div>`).join('');
-  }
+  }catch{}
 }
 
 /* ── VOICE LOCK MECHANISM ── */
@@ -2827,5 +2899,56 @@ if(_origRL){
   </div>
   <div class="mftr"><button class="mc" onclick="closeMov('chpw-mov')">Отмена</button><button class="mo" onclick="doChangePassword()">Сохранить</button></div>
 </div></div>
+
+<!-- MOBILE BOTTOM NAV -->
+<div class="mob-nav" id="mob-nav">
+  <div class="mob-nav-items">
+    <div class="mob-nav-item act" id="mob-nav-chats" onclick="mobNavTo('chats')">
+      <div class="mob-nav-ic">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <span class="mob-nav-lbl">Чаты</span>
+      <span class="mob-nav-badge" id="mob-badge-chats" style="display:none"></span>
+    </div>
+    <div class="mob-nav-item" id="mob-nav-contacts" onclick="mobNavTo('contacts')">
+      <div class="mob-nav-ic">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <span class="mob-nav-lbl">Контакты</span>
+    </div>
+    <div class="mob-nav-item" id="mob-nav-search" onclick="mobNavTo('search')">
+      <div class="mob-nav-ic">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <span class="mob-nav-lbl">Поиск</span>
+    </div>
+    <div class="mob-nav-item" id="mob-nav-settings" onclick="mobNavTo('settings')">
+      <div class="mob-nav-ic">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <span class="mob-nav-lbl">Настройки</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function mobNavTo(tab){
+  document.querySelectorAll('.mob-nav-item').forEach(i=>i.classList.remove('act'));
+  document.getElementById('mob-nav-'+tab)?.classList.add('act');
+  if(tab==='chats'){showSB();if(curChat)hideSB();}
+  else if(tab==='contacts'){showSB();openDMM();}
+  else if(tab==='search'){openGlobalSearch();}
+  else if(tab==='settings'){openSettings();}
+}
+function updateMobBadge(){
+  const total=chats.reduce((s,c)=>s+(c.unreadCount||0),0);
+  const badge=document.getElementById('mob-badge-chats');
+  if(badge){badge.style.display=total>0?'flex':'none';badge.textContent=total>99?'99+':total;}
+}
+// Patch renderChatList to update badge
+const _origRLMob=window.renderChatList;
+window.renderChatList=function(list){_origRLMob(list);setTimeout(updateMobBadge,50);};
+</script>
+
 </body>
 </html>
